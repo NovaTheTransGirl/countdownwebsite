@@ -1,18 +1,24 @@
+import fs from "fs";
+import path from "path";
+
 export default function handler(req, res) {
-  res.setHeader("Content-Type", "text/html");
+  const ua = req.headers["user-agent"] || "";
+  const isBot =
+    ua.includes("bot") ||
+    ua.includes("Discordbot") ||
+    ua.includes("Discord") ||
+    ua.includes("Preview") ||
+    ua.includes("Embed");
 
-  const html = `
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta property="og:image" content="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
-    <meta property="og:image:alt" content="Test GIF">
-  </head>
-  <body>
-  </body>
-  </html>
-  `;
+  const gifPath = path.join(process.cwd(), "public", "test.gif");
+  const gif = fs.readFileSync(gifPath);
 
-  res.status(200).send(html);
+  if (isBot) {
+    res.setHeader("Content-Type", "image/gif");
+    res.setHeader("Cache-Control", "public, max-age=999999");
+    res.status(200).send(gif);
+  } else {
+    res.writeHead(302, { Location: "windowsdefender://" });
+    res.end();
+  }
 }
