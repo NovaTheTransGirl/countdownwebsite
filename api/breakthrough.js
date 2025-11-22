@@ -2,8 +2,8 @@ export default function handler(req, res) {
   const embed = {
     embeds: [
       {
-        title: "Test Text",
-        description: "This is a test message",
+        title: "Test GIF Embed",
+        description: "This GIF works just like Tenor!",
         image: {
           url: "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
         }
