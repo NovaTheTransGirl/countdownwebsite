@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "src": "/breakthrough",
+      "dest": "/api/breakthrough.py"
+    }
+  ],
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "python3.11"
+    }
+  }
+}
