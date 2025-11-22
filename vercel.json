@@ -1,13 +1,14 @@
 {
-  "routes": [
-    {
-      "src": "/breakthrough",
-      "dest": "/api/breakthrough.py"
-    }
-  ],
+  "version": 2,
   "functions": {
-    "api/**/*.py": {
-      "runtime": "python3.11"
+    "api/breakthrough.py": {
+      "runtime": "vercel-python@1.1.0"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/breakthrough",
+      "destination": "/api/breakthrough.py"
+    }
+  ]
 }
