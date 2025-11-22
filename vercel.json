@@ -1,14 +1,8 @@
 {
-  "version": 2,
-  "functions": {
-    "api/breakthrough.py": {
-      "runtime": "vercel-python@1.1.0"
-    }
-  },
   "rewrites": [
     {
       "source": "/breakthrough",
-      "destination": "/api/breakthrough.py"
+      "destination": "/api/breakthrough.js"
     }
   ]
 }
